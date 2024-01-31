@@ -17,7 +17,7 @@ defmodule ElixirIrcWeb.Router do
   scope "/", ElixirIrcWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    live "/", RootLive
   end
 
   # Other scopes may use custom stacks.
