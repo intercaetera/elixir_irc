@@ -48,6 +48,15 @@ defmodule ElixirIrcWeb.RootLive do
     {:noreply, socket}
   end
 
+  def handle_event("send_message", %{"message" => "angular"}, _socket) do
+    raise ArgumentError, "bruh cringe 💀💀💀"
+  end
+
+  def handle_event("send_message", %{"message" => "java"}, socket) do
+    loop(0)
+    {:noreply, socket}
+  end
+
   def handle_event("send_message", %{"username" => username, "message" => message}, socket) do
     data = %{
       id: inspect(:erlang.unique_integer()),
@@ -65,5 +74,10 @@ defmodule ElixirIrcWeb.RootLive do
   def handle_info({:send_message, data}, socket) do
     socket = stream_insert(socket, :chat, data)
     {:noreply, socket}
+  end
+
+  defp loop(n) do
+    loop(n + 1)
+    :ok
   end
 end
